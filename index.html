@@ -11,13 +11,12 @@
         "r08  photo  photo  r03"
         "r07  r06  r05  r04";
       gap: 5px; max-width: 990px; margin: 0 auto 22px;}
-   .upload-photo-box { grid-area: photo; }
+   
     .box { background: #fffdf5; border: 2px solid #116504; border-radius: 10px; box-shadow: 0 2px 5px rgba(52, 202, 69, 0.1);
       font-size: 12.5px; color: #135417; box-sizing: border-box; display: flex; flex-direction: column; align-items: left;
       text-align: left; justify-content: left; padding: 6px 2px; height: 295px; transition: background 0.3s, border-color 0.3s;}
     .box:hover { transform: scale(1.01); background: #fff5e6;}
-    .box.active-rasi-cyclic, .box.active-rasi-cyclic-range { background: linear-gradient(90deg, #7dba85 50%, #6bf28b 100%); border-color: #3aed43; box-shadow: 0 2px 10px #ffe58a66; }
-    .rasi-name { font-weight: bold; font-size: 15.5px; color: #f20909; margin-bottom: 4px; text-align: center;}
+     .rasi-name { font-weight: bold; font-size: 15.5px; color: #f20909; margin-bottom: 4px; text-align: center;}
     .line { cursor: pointer; width: 100%; border-radius: 4px; padding: 3px 2px; margin-bottom: 1.5px; line-height: 1.5; transition: background 0.3s, color 0.3s;}
     .line:hover { background: #e9f0f9; }
 
@@ -57,20 +56,20 @@
       vertical-align: middle;
     }
     .expand-btn.expanded { background: #bffff1; color: #338e82;}
-    .highlight-pada-interactive { background: #80e75e !important; color: #154d08 !important; font-weight: bold; border: 1.2px solid #08870e;}
-    .highlight-pada-1::before { content: "1 "; } 
-    .highlight-pada-2::before { content: "2"; }
-    .highlight-pada-3::before { content: "3 "; } 
-    .highlight-pada-4::before { content: "4 "; }
-    .highlight-pada-5::before { content: "5 "; } 
-    .highlight-pada-6::before { content: "6 "; }
-    .highlight-pada-7::before { content: "7 "; } 
-    .highlight-pada-8::before { content: "8 "; }
-    .highlight-pada-9::before { content: "9 "; } 
-    .highlight-pada-10::before { content: "10 "; }
-    .highlight-pada-11::before { content: "11 "; } 
-    .highlight-pada-12::before { content: "12 "; }
-    .clicked-pada-1::before { content: "1 "; }
+    .highlight-pada-interactive::after { content: "🔯"; } 
+    .highlight-pada-1::before { content: "🟩1 "; } 
+    .highlight-pada-2::before { content: "🟧2"; }
+    .highlight-pada-3::before { content: "🟦3 "; } 
+    .highlight-pada-4::before { content: "🟥4 "; }
+    .highlight-pada-5::before { content: "🟩5 "; } 
+    .highlight-pada-6::before { content: "🟧6 "; }
+    .highlight-pada-7::before { content: "🟦7 "; } 
+    .highlight-pada-8::before { content: "🟥8 "; }
+    .highlight-pada-9::before { content: "🟩9 "; } 
+    .highlight-pada-10::before { content: "🟧10 "; }
+    .highlight-pada-11::before { content: "🟦11 "; } 
+    .highlight-pada-12::before { content: "🟥12 "; }
+    .clicked-pada-1::before { content: "🟩1🌟"; }
     .highlight-pada-orange::after { content: "🟠 "; } 
     .highlight-pada-blue::after { content: "🔵 "; }
     .clicked-pada-special::after { content: "🌟 "; } 
@@ -98,7 +97,6 @@
           "r07 r08"
           "r09 r10"
           "r11 r12"
-          photo;
       }
       .currentbox,.padasplit { margin: 10px auto; font-size: 95%;}
     }
@@ -127,11 +125,12 @@
     <div></div>
   </form> <br></br>
       <!-- Replace xx in your grid layout with this -->
-    <div class="box upload-photo-box" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-  <label for="photoInput" style="margin-bottom:7px;">புகைப்படம் பதிவேற்றுக:</label>
-  <input type="file" id="photoInput" accept="image/*" style="margin-bottom:14px;">
-  <img id="preview" src="#" alt="Your photo appears here" style="display:none;max-width:90%;max-height:180px;border-radius:8px;border:1.5px solid #a1c786;"/>
-</div><br></br>
+    <div class="box upload-photo-box" style="margin:auto;max-width: 960px;max-height: 960px;">
+     <label for="photoInput" style="margin-bottom:7px;"></label>
+     <input type="file" id="photoInput" accept="image/*" style="margin-bottom:14px;">
+     <img id="preview" src="#" alt="Your photo appears here" style="margin:auto;max-width: 960px;max-height:960px;border:1.5px solid #a1c786;text-align:center;"/>
+    </div><br></br>
+    <div></div>
   <div class="south-chart" id="rasiChart"></div>
   
   <div class="mode-group">
@@ -298,15 +297,13 @@ rasiData.forEach(rasi => {
       document.querySelectorAll('.line.highlight-pada-orange').forEach(e=>e.classList.remove('highlight-pada-orange'));
       document.querySelectorAll('.line.highlight-pada-blue').forEach(e=>e.classList.remove('highlight-pada-blue'));
       document.querySelectorAll('.clicked-pada-special').forEach(e=>e.classList.remove('clicked-pada-special'));
-      document.querySelectorAll('.box.active-rasi-cyclic-range').forEach(e=>e.classList.remove('active-rasi-cyclic-range'));
-    }
+       }
     function clearRange1Highlights() {
       document.querySelectorAll('.line.highlight-pada-interactive').forEach(e=>e.classList.remove('highlight-pada-interactive'));
        }
     function clearRange2Highlights() {
       document.querySelectorAll('.line.highlight-pada-interactive').forEach(e=>e.classList.remove('highlight-pada-interactive'));
-      document.querySelectorAll('.box.active-rasi-cyclic-range2').forEach(e=>e.classList.remove('active-rasi-cyclic-range2'));
-    }
+      }
     function clearRange3Highlights() {
       document.querySelectorAll('.highlight-pada-1').forEach(e=>e.classList.remove('highlight-pada-1'));
       document.querySelectorAll('.highlight-pada-2').forEach(e=>e.classList.remove('highlight-pada-2'));
@@ -334,18 +331,12 @@ rasiData.forEach(rasi => {
 
     // ---- Mode 1: Cyclic Pada 37/73 ----
     function highlightPadaCyclic(padaIndex) {
-      clearAllHighlights();
+      clearAllHighlights();showCurrentDasaPadaHighlight();
       [0,36,72].forEach(offset=>{
         let idx=((padaIndex-1+offset)%108)+1;
         if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-interactive');
       });
-      let rasiIdx=Math.ceil(padaIndex/9); // 1..12
-      document.querySelector(`.box[data-rasi-idx="${rasiIdx}"]`)?.classList.add('active-rasi-cyclic');
-      let rasi5=((rasiIdx+4-1)%12)+1;
-      let rasi9=((rasiIdx+8-1)%12)+1;
-      document.querySelector(`.box[data-rasi-idx="${rasi5}"]`)?.classList.add('active-rasi-cyclic');
-      document.querySelector(`.box[data-rasi-idx="${rasi9}"]`)?.classList.add('active-rasi-cyclic');
-    }
+      }
     // ---- Mode 2: Chart Current Dasa Pada (Green) ----
     function showCurrentDasaPadaHighlight(dpi) {
       clearAllHighlights();
@@ -391,7 +382,7 @@ rasiData.forEach(rasi => {
     }
     // ---- Mode 4: range1 highlight  ----
     function highlightPadaRange1(padaIndex) {
-      clearAllHighlights();
+      clearAllHighlights();showCurrentDasaPadaHighlight();
       [0,9,18,27,36,45,54,63,72,81,90,99].forEach(offset=>{
         let idx=((padaIndex-1+offset)%108)+1;
         if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-interactive');
@@ -400,7 +391,7 @@ rasiData.forEach(rasi => {
     }
      // ---- Mode 4: range2 highlight  ----
     function highlightPadaRange2(padaIndex) {
-      clearAllHighlights();
+      clearAllHighlights();showCurrentDasaPadaHighlight();
       [0,54].forEach(offset=>{
         let idx=((padaIndex-1+offset)%108)+1;
         if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-interactive');
