@@ -11,7 +11,30 @@
         "r08  photo  photo  r03"
         "r07  r06  r05  r04";
       gap: 5px; max-width: 990px; margin: 0 auto 22px;}
-   
+    .upload-photo-box {
+  margin:auto;
+  max-width: 600px;
+  max-height: 600px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#preview {
+  display: auto;
+  max-width: 95%;
+  max-height: 90%;
+  object-fit: contain;
+  border: 1.5px solid #a1c786;
+  margin: auto;
+  box-shadow: 0 1px 6px #d3efe1;
+  background: #f7f7f7;
+}
+
     .box { background: #fffdf5; border: 2px solid #116504; border-radius: 10px; box-shadow: 0 2px 5px rgba(52, 202, 69, 0.1);
       font-size: 12.5px; color: #135417; box-sizing: border-box; display: flex; flex-direction: column; align-items: left;
       text-align: left; justify-content: left; padding: 6px 2px; height: 295px; transition: background 0.3s, border-color 0.3s;}
@@ -125,11 +148,13 @@
     <div></div>
   </form> <br></br>
       <!-- Replace xx in your grid layout with this -->
-    <div class="box upload-photo-box" style="margin:auto;max-width: 960px;max-height: 960px;">
-     <label for="photoInput" style="margin-bottom:7px;"></label>
-     <input type="file" id="photoInput" accept="image/*" style="margin-bottom:14px;">
-     <img id="preview" src="#" alt="Your photo appears here" style="margin:auto;max-width: 960px;max-height:960px;border:1.5px solid #a1c786;text-align:center;"/>
-    </div><br></br>
+    <div class="box upload-photo-box" style="">
+  <label for="photoInput" style="margin-bottom:7px;">...</label>
+  <input type="file" id="photoInput" accept="image/*" style="margin-bottom:14px;">
+  <img id="preview" src="#" alt="Your photo appears here"/>
+</div>
+<br></br>
+<br></br>
     <div></div>
   <div class="south-chart" id="rasiChart"></div>
   
@@ -455,10 +480,7 @@ rasiData.forEach(rasi => {
         if(padaDomList[idx]) padaDomList[idx].classList.add('highlight-pada-12');
       }
     }
-         const photoInput = document.getElementById('photoInput');
-const preview = document.getElementById('preview');
-
-photoInput.addEventListener('change', function(event) {
+       photoInput.addEventListener('change', function(event) {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
